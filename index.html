@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#1f4e79" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <title>Car Show Voting</title>
+
+  <style>
+    body { margin:0; font-family: Arial, sans-serif; text-align:center; }
+    .header { padding:18px; background:#1f4e79; color:white; font-size:22px; font-weight:700; }
+    .wrap { padding:30px; }
+    .btn { display:inline-block; padding:16px 22px; background:#1f4e79; color:white; border-radius:14px; text-decoration:none; font-size:20px; }
+    .small { margin-top:16px; color:#444; font-size:14px; }
+  </style>
+</head>
+<body>
+  <div class="header">Car Show Voting</div>
+  <div class="wrap">
+    <a class="btn" id="voteBtn" href="#">Open Voting</a>
+    <div class="small">
+      Install this app from your browser menu for quick access.
+    </div>
+  </div>
+
+  <script>
+    const VOTING_URL = "https://script.google.com/macros/s/AKfycbwEt3LQSv7hED-UdrfzUwEK0ycNCrqChq_g-5Ssv3gIu9V-hstPE6j3gi7RSKah30KOZQ/exec";
+
+    document.getElementById("voteBtn").href = VOTING_URL;
+
+    // Auto-forward after short delay
+    setTimeout(() => {
+      window.location.href = VOTING_URL;
+    }, 500);
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js");
+    }
+  </script>
+</body>
+</html>
